@@ -1,0 +1,19 @@
+
+<div class="container">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="signup-container">
+
+        <p class="signup-title">Create account</p>
+        <p>First Name</p>
+        <input formControlName="firstName" placeholder="First Name" type="firstname"/>
+        <p>Last Name</p>
+        <input formControlName="lastName" placeholder="Last Name" type="lastname"/>
+        <p>Email</p>
+        <input formControlName="email" placeholder="Email" type="email"/>
+        <p>Password</p>
+        <input formControlName="password" placeholder="Password" type="password"/>
+        <button type="submit">Sign up!</button>
+    
+    </form>
+</div>
+
+

@@ -1,6 +1,14 @@
 import { bootstrapApplication } from '@angular/platform-browser';
+import { importProvidersFrom } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import { appConfig } from './app/app.config';
 import { AppComponent } from './app/app.component';
 
-bootstrapApplication(AppComponent, appConfig)
+bootstrapApplication(AppComponent, {
+  ...appConfig, 
+  providers: [
+    ...appConfig.providers,
+    importProvidersFrom(ReactiveFormsModule)
+  ]
+})
   .catch((err) => console.error(err));
