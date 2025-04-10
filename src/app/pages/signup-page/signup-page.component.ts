@@ -17,7 +17,7 @@ constructor(private fb: FormBuilder, private authService: AuthService) {
     firstName: ['', Validators.required],
     lastName: ['', Validators.required],  
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required],
+    password: ['', Validators.required]
   });
 }
 

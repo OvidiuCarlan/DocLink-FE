@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url("../../assets/images/signupBackground.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+}
+  .signup-page.container {
+    background-color: red;
+    height: 100vh; 
+  }
+  .test{
+    background-color: green;
+  }
+  .signup-container{
+    background-color: aliceblue;
+    width: 300px;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    border-radius: 12px;
+  }
+
+  button{
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    margin-top: 15px;
+    width: 100px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  input{
+    border: none;
+    border-radius: 12px;
+    height: 30px;
+  }
+
+  .container{
+    display: flex;
+    justify-content: center;
+    align-items: center;   
+    height: 100vh;
+  }
+
+  .signup-title{
+    font-size: 20px;
+    font-family: 'Courier New', Courier, monospace;
+    text-align: center;
+  }
+
+  p{
+    font-family: 'Courier New', Courier, monospace;
+    margin-bottom: 0;
+  }

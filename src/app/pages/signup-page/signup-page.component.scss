@@ -1,3 +1,19 @@
+:host {
+  display: block;
+  height: 100vh;
+  background-image: url("../../assets/images/signupBackground.png");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-size: cover;
+}
+.container{
+  display: flex;
+  justify-content: center;
+  align-items: center;   
+  height: 100vh;
+}
 .signup-page.container {
     background-color: red;
     height: 100vh; 
@@ -29,14 +45,6 @@
     border: none;
     border-radius: 12px;
     height: 30px;
-  }
-
-  .container{
-    display: flex;
-  justify-content: center;
-  align-items: center;   
-  height: 100vh;
-  background-color: #f0f0f0;
   }
 
   .signup-title{

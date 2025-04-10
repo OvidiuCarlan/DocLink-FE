@@ -1,1 +1,12 @@
-<p>login-page works!</p>
+<div class="container">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="signup-container">
+
+        <p class="signup-title">Login into your account</p>
+        <p>Email</p>
+        <input formControlName="email" placeholder="Email" type="email"/>
+        <p>Password</p>
+        <input formControlName="password" placeholder="Password" type="password"/>
+        <button type="submit">Log in!</button>
+    
+    </form>
+</div>
