@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { catchError, Observable, tap, throwError } from 'rxjs';
 import { SignUpData } from '../../shared/models/signup-model';
 import { Router } from '@angular/router';
+import { TokenManagerService } from './token-manager.service';
 
 
 
@@ -13,7 +14,7 @@ export class AuthService {
 
   readonly url = 'http://localhost:8080';
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router, private tokenManager: TokenManagerService) {}
 
   signUp(data: SignUpData): Observable<any>{
     return this.http.post(this.url + '/users', data);
@@ -26,9 +27,8 @@ export class AuthService {
     }).pipe(
       tap(response => {
         if (response && response.accessToken) {
-          localStorage.setItem('accessToken', response.accessToken); // Or use a TokenManager service
+          this.tokenManager.storeToken(response.accessToken);
           alert("User Logged In");
-          this.router.navigate(['/doc-landing']);
         } else {
           alert("Invalid response from the server");
         }
