@@ -60,4 +60,8 @@ export class LoginPageComponent {
     }
 
   }
+
+  goToSignup(): void {
+    this.router.navigate(['/signup']);
+  }
 }
