@@ -3,6 +3,7 @@ import { SignupPageComponent } from './pages/signup-page/signup-page.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { DocLandingPageComponent } from './pages/doc-landing-page/doc-landing-page.component';
 import { UserLandingPageComponent } from './pages/user-landing-page/user-landing-page.component';
+import { CreatePostPageComponent } from './pages/create-post-page/create-post-page.component';
 
 export const routes: Routes = [
     {path: '', redirectTo: 'signup', pathMatch: 'full'},
@@ -16,4 +17,7 @@ export const routes: Routes = [
 
     {path: '', redirectTo: 'user-landing', pathMatch: 'full'},
     {path: 'user-landing', component: UserLandingPageComponent},
+
+    {path: '', redirectTo: 'create-post', pathMatch: 'full'},
+    {path: 'create-post', component: CreatePostPageComponent},
 ];
