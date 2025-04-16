@@ -1,12 +1,18 @@
 :host {
   display: block;
   height: 100vh;
-  background-image: url("../../assets/images/signupBackground.png");
+  box-sizing: border-box;
+  background-image: url("../../../../src/assets/images/signupBackground.png");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   background-size: 100%;
   background-size: cover;
+}
+body{
+  margin:0;
+  padding: 0;
+  border: 0;
 }
   .signup-page.container {
     background-color: red;
