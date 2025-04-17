@@ -14,6 +14,7 @@ export class TokenManagerService {
     try {
       const decoded: any = jwtDecode(token);
       localStorage.setItem('claims', JSON.stringify(decoded));
+      localStorage.setItem('token', token)
     } catch (error) {
       console.error('Error decoding token:', error);
     }

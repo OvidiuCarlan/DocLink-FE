@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { PostService } from '../../services/post.service';
+import { PostData } from '../../../shared/models/post-model';
+import { TokenManagerService } from '../../services/token-manager.service';
 
 
 @Component({
@@ -11,8 +14,9 @@ import { CommonModule } from '@angular/common';
 })
 export class CreatePostCardComponent {
   postForm: FormGroup;
+  userId: any;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private postService: PostService,private tokenManager: TokenManagerService) {
     this.postForm = this.fb.group({
       title: ['', [Validators.required, Validators.maxLength(100)]],
       content: ['', [Validators.required]],
@@ -21,10 +25,25 @@ export class CreatePostCardComponent {
   }
 
   onSubmit() {
-    if (this.postForm.valid) {
-      console.log('Post created:', this.postForm.value);
-      // TODO: Send data to backend via service
-      this.postForm.reset();
+    this.userId = this.tokenManager.getClaims().userId;
+
+    if (this.postForm.valid && this.tokenManager.getClaims().roles == "DOC") {
+      const newPost: PostData = {
+        userId: this.userId,
+        title: this.postForm.value.title,
+        content: this.postForm.value.content,
+        category: this.postForm.value.category,
+      };
+
+      this.postService.createPost(newPost).subscribe({
+      next: (response) => {
+        console.log('Post successfully created:', response);
+        this.postForm.reset();
+      },
+      error: (err) => {
+        console.error('Error creating post:', err);
+      }
+    });
     }
   }
 }
