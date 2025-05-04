@@ -5,3 +5,7 @@ export interface PostData {
     content: string;
     category: string;
 }
+
+export interface GetPostsResponse {
+    posts: PostData[];
+}

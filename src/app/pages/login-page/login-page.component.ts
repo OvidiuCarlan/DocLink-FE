@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
-import { error } from 'console';
 import { AuthService } from '../../services/auth.service';
 import { Router } from '@angular/router';
 import { TokenManagerService } from '../../services/token-manager.service';

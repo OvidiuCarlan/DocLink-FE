@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { PostData } from '../../shared/models/post-model';
+import { GetPostsResponse, PostData } from '../../shared/models/post-model';
 import { Observable, catchError, throwError } from 'rxjs';
 import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 
@@ -23,7 +23,7 @@ export class PostService {
       );
   }
 
-  getPosts(): Observable<PostData[]> {
-    return this.http.get<PostData[]>(this.url + '/posts');
-  }
+  getPosts(userId: string): Observable<GetPostsResponse> {
+    return this.http.get<GetPostsResponse>(`${this.url}/posts/${userId}`);
+  }  
 }
