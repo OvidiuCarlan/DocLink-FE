@@ -5,4 +5,9 @@ export interface AppointmentData {
     date: string;
     time: string;
     notes: string;
+    procedureTitle?: string;
+}
+
+export interface GetAppointmentsResponse {
+    appointments: AppointmentData[];
 }

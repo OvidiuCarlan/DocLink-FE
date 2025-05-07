@@ -21,7 +21,10 @@ export class TokenManagerService {
   }
 
   getClaims(): any {
-    const claims = localStorage.getItem('claims');
-    return claims ? JSON.parse(claims) : null;
+    if (typeof window !== 'undefined') {
+      const claims = localStorage.getItem('claims');
+      return claims ? JSON.parse(claims) : null;
+    }
+    return null;
   }
 }

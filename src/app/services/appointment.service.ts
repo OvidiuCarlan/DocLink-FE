@@ -1,6 +1,6 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { AppointmentData } from '../../shared/models/appointment-model';
+import { AppointmentData, GetAppointmentsResponse } from '../../shared/models/appointment-model';
 import { catchError, Observable, throwError } from 'rxjs';
 
 @Injectable({
@@ -17,6 +17,17 @@ export class AppointmentService {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error creating appointment', error);
+          return throwError(() => error);
+        })
+      );
+  }
+
+  getUserAppointments(userId: string): Observable<GetAppointmentsResponse> {
+    const getUrl = `${this.url}/${userId}`;
+    return this.http.get<GetAppointmentsResponse>(getUrl)
+      .pipe(
+        catchError((error: HttpErrorResponse) => {
+          console.error('Error fetching user appointments', error);
           return throwError(() => error);
         })
       );
