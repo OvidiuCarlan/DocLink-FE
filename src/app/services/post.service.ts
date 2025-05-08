@@ -9,12 +9,12 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 })
 export class PostService {
 
-  readonly url = 'http://localhost:8081';
+  readonly url = 'http://localhost:9000/posts';
 
   constructor(private http: HttpClient, ) { }
 
   createPost(data: PostData): Observable<PostData> {
-    return this.http.post<PostData>(this.url + '/posts', data)
+    return this.http.post<PostData>(this.url, data)
       .pipe(
         catchError((error: HttpErrorResponse) => {
           console.error('Error creating post:', error);
@@ -24,6 +24,6 @@ export class PostService {
   }
 
   getPosts(userId: string): Observable<GetPostsResponse> {
-    return this.http.get<GetPostsResponse>(`${this.url}/posts/${userId}`);
+    return this.http.get<GetPostsResponse>(`${this.url}/${userId}`);
   }  
 }

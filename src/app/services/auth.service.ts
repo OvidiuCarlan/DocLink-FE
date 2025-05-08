@@ -12,16 +12,16 @@ import { TokenManagerService } from './token-manager.service';
 })
 export class AuthService {
 
-  readonly url = 'http://localhost:8080';
+  readonly url = 'http://localhost:8080/users';
 
   constructor(private http: HttpClient, private router: Router, private tokenManager: TokenManagerService) {}
 
   signUp(data: SignUpData): Observable<any>{
-    return this.http.post(this.url + '/users', data);
+    return this.http.post(this.url, data);
   }
 
   login(loginItem: any): Observable<any> {
-    return this.http.post<any>(`${this.url}/users/tokens`, loginItem, {
+    return this.http.post<any>(`${this.url}/tokens`, loginItem, {
       withCredentials: true,
       headers: new HttpHeaders({}) // Add custom headers if necessary
     }).pipe(

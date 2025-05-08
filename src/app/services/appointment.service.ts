@@ -8,7 +8,7 @@ import { catchError, Observable, throwError } from 'rxjs';
 })
 export class AppointmentService {
 
-  readonly url = 'http://localhost:8082/appointments';
+  readonly url = 'http://localhost:9000/appointments';
 
   constructor(private http: HttpClient, ) { }
 
