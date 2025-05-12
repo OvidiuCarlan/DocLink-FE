@@ -9,7 +9,7 @@ import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http
 })
 export class PostService {
 
-readonly url = '/api/posts';
+readonly url = 'http://localhost:9000/posts';
 
   constructor(private http: HttpClient, ) { }
 
