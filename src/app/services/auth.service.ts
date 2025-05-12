@@ -12,7 +12,7 @@ import { TokenManagerService } from './token-manager.service';
 })
 export class AuthService {
 
-  readonly url = 'http://localhost:9000/users';
+  readonly url = '/api/users';
 
   constructor(private http: HttpClient, private router: Router, private tokenManager: TokenManagerService) {}
 
@@ -22,8 +22,7 @@ export class AuthService {
 
   login(loginItem: any): Observable<any> {
     return this.http.post<any>(`${this.url}/tokens`, loginItem, {
-      // withCredentials: true,
-      headers: new HttpHeaders({'Content-Type': 'application/json'}) // Add custom headers if necessary
+      headers: new HttpHeaders({'Content-Type': 'application/json'})
     }).pipe(
       tap(response => {
         if (response && response.accessToken) {
