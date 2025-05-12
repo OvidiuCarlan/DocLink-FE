@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { AppointmentData, GetAppointmentsResponse } from '../../shared/models/appointment-model';
 import { catchError, Observable, throwError } from 'rxjs';
@@ -11,6 +11,7 @@ export class AppointmentService {
   readonly url = 'http://localhost:9000/appointments';
 
   constructor(private http: HttpClient, ) { }
+  
 
   createAppointment(data: AppointmentData): Observable<AppointmentData>{
     return this.http.post<AppointmentData>(this.url, data)
@@ -22,14 +23,24 @@ export class AppointmentService {
       );
   }
 
+  // getUserAppointments(userId: string): Observable<GetAppointmentsResponse> {
+  //   const getUrl = `${this.url}/${userId}`;
+  //   return this.http.get<GetAppointmentsResponse>(getUrl)
+  //     .pipe(
+  //       catchError((error: HttpErrorResponse) => {
+  //         console.error('Error fetching user appointments', error);
+  //         return throwError(() => error);
+  //       })
+  //     );
+  // }
+
   getUserAppointments(userId: string): Observable<GetAppointmentsResponse> {
-    const getUrl = `${this.url}/${userId}`;
-    return this.http.get<GetAppointmentsResponse>(getUrl)
-      .pipe(
-        catchError((error: HttpErrorResponse) => {
-          console.error('Error fetching user appointments', error);
-          return throwError(() => error);
-        })
-      );
-  }
+  const getUrl = `${this.url}/${userId}`;
+  return this.http.get<GetAppointmentsResponse>(getUrl).pipe(
+    catchError((error: HttpErrorResponse) => {
+      console.error('Error fetching user appointments', error);
+      return throwError(() => error);
+    })
+  );
+}
 }

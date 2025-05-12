@@ -23,7 +23,16 @@ export class PostService {
       );
   }
 
+  // getPosts(userId: string): Observable<GetPostsResponse> {
+  //   return this.http.get<GetPostsResponse>(`${this.url}/${userId}`);
+  // } 
+  
   getPosts(userId: string): Observable<GetPostsResponse> {
-    return this.http.get<GetPostsResponse>(`${this.url}/${userId}`);
-  }  
+  return this.http.get<GetPostsResponse>(`${this.url}/${userId}`).pipe(
+    catchError((error: HttpErrorResponse) => {
+      console.error('Error fetching posts:', error);
+      return throwError(() => error);
+    })
+  );
+}
 }
