@@ -12,7 +12,7 @@ import { TokenManagerService } from './token-manager.service';
 })
 export class AuthService {
 
-  readonly url = 'http://localhost:9000/users';
+  readonly url = '/api/users';
 
   constructor(private http: HttpClient, private router: Router, private tokenManager: TokenManagerService) {}
 
